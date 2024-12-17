@@ -6,12 +6,14 @@ body {
   color: #f0f0f0;
   line-height: 1.6;
   overflow-x: hidden;
-    position: relative;
+  position: relative;
 }
+
 .page-transition {
-position: relative;
-overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
+
 .page-transition::before {
   content: '';
   position: fixed;
@@ -32,21 +34,26 @@ overflow: hidden;
 
 main {
   overflow-y: hidden;
-  height: 100vh; /* Occupy full viewport height */
-display: flex;
+  min-height: 100vh;
+  display: flex;
   flex-direction: column;
-
 }
+
+
 main section {
   display: none;
+  padding: 80px 20px;
+  /* Add padding to top and bottom */
+  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 main section.current {
-display: flex;
-     flex-direction: column;
-     flex: 1; /* Grow to occupy all space */
-   overflow-y: auto;
+  display: flex;
+  overflow-y: auto;
 }
+
 
 /* Header & Navigation */
 header {
@@ -95,15 +102,16 @@ nav ul li a:hover {
 
 /* Hero Section */
 .hero {
-   background-size: cover;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-position:relative;
+  position: relative;
 }
+
 .hero::before {
   content: "";
   position: absolute;
@@ -121,11 +129,13 @@ position:relative;
   0% {
       background-position: 0% 50%;
   }
+
   50% {
       background-position: 100% 50%;
   }
+
   100% {
-    background-position: 0% 50%;
+      background-position: 0% 50%;
   }
 }
 
@@ -149,24 +159,27 @@ position:relative;
   font-size: 1.5em;
   margin-bottom: 10px;
 }
+
 #job-title.animate-job-title {
-animation: fadeInOut 0.3s ease-in-out;
+  animation: fadeInOut 0.3s ease-in-out;
 }
 
 @keyframes fadeInOut {
-0% {
-   opacity: 0;
-  transform: translateY(-20px);
-   
-}
-50%{
-       opacity: 1;
-  transform: translateY(0);
-}
- 100% {
-   opacity: 0;
-    transform: translateY(20px);
-}
+  0% {
+      opacity: 0;
+      transform: translateY(-20px);
+
+  }
+
+  50% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+
+  100% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
 }
 
 
@@ -179,24 +192,24 @@ animation: fadeInOut 0.3s ease-in-out;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-      text-decoration: none;
+  text-decoration: none;
   display: inline-block;
 }
 
 .hero-button:hover {
   background-color: #00c066;
 }
-/* Hero Title Styling */
-
 
 /* About Section */
 .about {
   padding: 80px 20px;
-   position: relative;
+  position: relative;
 }
-.about:hover{
+
+.about:hover {
   transform: scale(1.02);
 }
+
 .about .container {
   display: flex;
   flex-wrap: wrap;
@@ -216,8 +229,9 @@ animation: fadeInOut 0.3s ease-in-out;
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-   transition: transform 0.3s;
+  transition: transform 0.3s;
 }
+
 .about-image img:hover {
   transform: scale(1.1);
 }
@@ -240,11 +254,13 @@ animation: fadeInOut 0.3s ease-in-out;
 .services {
   padding: 80px 20px;
   background-color: #1a1a1a;
-   position: relative;
+  position: relative;
 }
-.services:hover{
+
+.services:hover {
   transform: scale(1.02);
 }
+
 .services .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -259,7 +275,7 @@ animation: fadeInOut 0.3s ease-in-out;
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
@@ -267,22 +283,34 @@ animation: fadeInOut 0.3s ease-in-out;
   background-color: #222;
   border-radius: 8px;
   padding: 20px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  /* space between icon and text*/
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s;
   position: relative;
+  text-align: left;
 }
 
 .service-item:hover {
   transform: translateY(-5px) scale(1.05);
 }
+
 .service-item:active {
-transform: translateY(-2px) scale(1);
+  transform: translateY(-2px) scale(1);
 }
 
-.service-item i {
+.service-item .icons {
   font-size: 2.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 0;
+  /* remove the margin-bottom of the old icon*/
+  flex-shrink: 0;
+  /* to make sure icon does not shrink if content is large */
+}
+
+.service-item-content {
+  flex: 1;
 }
 
 .service-item h3 {
@@ -317,15 +345,22 @@ transform: translateY(-2px) scale(1);
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+.icons {
+  font-size: 2.5rem;
+  /*margin-bottom: 15px;*/
+  /* Removed here, moved to specific place*/
+}
+
 /* Projects Section */
 .projects {
   padding: 80px 20px;
-   position: relative;
+  position: relative;
 }
 
-.projects:hover{
+.projects:hover {
   transform: scale(1.02);
 }
+
 .projects .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -356,8 +391,9 @@ transform: translateY(-2px) scale(1);
 .project-item:hover {
   transform: translateY(-5px) scale(1.05);
 }
+
 .project-item:active {
-transform: translateY(-2px) scale(1);
+  transform: translateY(-2px) scale(1);
 }
 
 .project-item img {
@@ -367,6 +403,7 @@ transform: translateY(-2px) scale(1);
   margin-bottom: 15px;
   transition: transform 0.3s;
 }
+
 .project-item img:hover {
   transform: scale(1.1);
 }
@@ -380,6 +417,7 @@ transform: translateY(-2px) scale(1);
   margin-bottom: 20px;
   font-size: 1rem;
 }
+
 .project-button {
   background-color: #00FF7F;
   color: #111;
@@ -396,6 +434,7 @@ transform: translateY(-2px) scale(1);
 .project-button:hover {
   background-color: #00c066;
 }
+
 .project-button:active {
   transform: scale(0.95);
 }
@@ -404,10 +443,10 @@ transform: translateY(-2px) scale(1);
 .contact {
   padding: 80px 20px;
   background-color: #1a1a1a;
-   position: relative;
+  position: relative;
 }
 
-.contact:hover{
+.contact:hover {
   transform: scale(1.02);
 }
 
@@ -432,6 +471,9 @@ transform: translateY(-2px) scale(1);
   color: #00FF7F;
   text-decoration: none;
   transition: color 0.3s;
+  display: inline-flex;
+  align-items: center; /* Aligns icon with the text */
+  gap: 5px; /* Add a small space between icon and text */
 }
 
 .contact-info a:hover {
