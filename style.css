@@ -1,3 +1,4 @@
+/* General Styles - Keep these unchanged for now*/
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -161,10 +162,44 @@ nav ul li a:hover {
     background-position: 0% 50%;
   }
 }
+.hero-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content horizontally in the hero section */
+    max-width: 1200px; /* Limit the maximum width of the content container */
+     margin: 0 auto;
+    padding: 20px;
+}
+
+.hero-image-container {
+     flex: 0 0 auto; /* Do not grow or shrink the image */
+    margin-right: 20px;
+    transform: translateX(-20px);
+    opacity: 0;
+        transition: transform 0.5s ease-out 0.2s, opacity 0.5s ease-out 0.2s;
+}
+.hero.current .hero-image-container{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.hero-image {
+    max-width: 180px; /* Reduced max width of image*/
+    height: auto;
+    border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.hero-image:hover {
+ transform: scale(1.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
 
 .hero-content {
-  padding: 20px;
-  max-width: 800px;
+    flex: 1; /* Allow content to take available space*/
+    text-align: left;/* Align text to the left */
+    padding-right: 10px;
+  max-width: 600px;
     transform: translateY(20px); /* Initial Y-offset */
     opacity: 0; /* Initial opacity */
     animation: fadeInSlideUp 0.8s ease-out 0.3s forwards;
@@ -607,4 +642,20 @@ footer {
          padding-left: 0px;
     text-align: center;
     }
+    .hero-content-container {
+       flex-direction: column;
+    }
+    .hero-image-container {
+        margin-right: 0; /* Remove margin on mobile view */
+       transform: translateX(0); /* Remove margin on mobile view*/
+       margin-bottom: 15px; /* Add margin bottom on mobile view */
+        opacity: 1;
+        align-self: center; /* Center image on mobile view */
+    }
+    .hero-content{
+        text-align: center;
+    padding-right: 0; /* Remove right padding on mobile view */
+        margin-top: 0px;
+    }
+
 }
